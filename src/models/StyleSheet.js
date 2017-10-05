@@ -13,7 +13,7 @@ export interface Tag {
 
   isFull(): boolean,
   addComponent(componentId: string): void,
-  inject(componentId: string, css: string, name: ?string): void,
+  inject(componentId: string, cssRules: Array<string>, name: ?string): void,
   toHTML(): string,
   toReactElement(key: string): React.Element<*>,
   clone(): Tag,
@@ -89,22 +89,28 @@ export default class StyleSheet {
     this.deferredInjections[componentId] = css
   }
 
-  inject(componentId: string, isLocal: boolean, css: string, hash: ?any, name: ?string) {
+  inject(
+    componentId: string,
+    isLocal: boolean,
+    cssRules: Array<string>,
+    hash: ?any,
+    name: ?string,
+  ) {
     if (this === instance) {
       clones.forEach(clone => {
-        clone.inject(componentId, isLocal, css)
+        clone.inject(componentId, isLocal, cssRules)
       })
     }
 
     const tag = this.getOrCreateTag(componentId, isLocal)
 
     const deferredInjection = this.deferredInjections[componentId]
-    if (deferredInjection) {
-      tag.inject(componentId, deferredInjection)
+    if (deferredInjection !== undefined) {
+      tag.inject(componentId, [(deferredInjection: string)])
       delete this.deferredInjections[componentId]
     }
 
-    tag.inject(componentId, css, name)
+    tag.inject(componentId, cssRules, name)
 
     if (hash && name) {
       this.hashes[hash.toString()] = name
