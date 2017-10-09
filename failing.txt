@@ -1,0 +1,1656 @@
+
+> styled-components@2.2.1 test /mnt/c/Users/schwers/dev/reddit/styled-components
+> npm run test:web && npm run test:native && npm run test:size
+
+
+> styled-components@2.2.1 test:web /mnt/c/Users/schwers/dev/reddit/styled-components
+> jest -c .jest.web.json
+
+
+ RUNS  ...primitives.test.js
+ RUNS  ...ssr.test.js
+ RUNS  ...rehydration.test.js
+ RUNS  ...theme.test.js
+ RUNS  ...extending.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...css.test.js
+
+Test Suites: 0 of 26 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        0s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A FAIL  src/test/ssr.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...ssr.test.js
+ RUNS  ...rehydration.test.js
+ RUNS  ...theme.test.js
+ RUNS  ...extending.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...css.test.js
+
+Test Suites: 0 of 26 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        0s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A  ● ssr › should extract the CSS in a simple case
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="b" data-styled-components-is-local="true">/* sc-component-id: sc-a */
+     .sc-a {}
+    -
+     .b{color: red;}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:41:17)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should extract both global and local CSS
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-2303210225 */
+     body{background: papayawhip;}
+     </style><style type="text/css" data-styled-components="b" data-styled-components-is-local="true">/* sc-component-id: sc-a */
+     .sc-a {}
+    -
+     .b{color: red;}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:57:17)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should add a nonce to the stylesheet if webpack nonce is detected in the global scope
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="" data-styled-components-is-local="false" nonce="foo">/* sc-component-id: sc-global-2303210225 */
+     body{background: papayawhip;}
+     </style><style type="text/css" data-styled-components="b" data-styled-components-is-local="true" nonce="foo">/* sc-component-id: sc-a */
+     .sc-a {}
+    -
+     .b{color: red;}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:76:17)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should render CSS in the order the components were defined, not rendered
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="a b" data-styled-components-is-local="true">/* sc-component-id: ONE */
+     .ONE {}
+    -
+     .b{color: red;}
+     /* sc-component-id: TWO */
+     .TWO {}
+    -
+     .a{color: blue;}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:97:17)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should share global styles but keep renders separate
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-2303210225 */
+     body{background: papayawhip;}
+     </style><style type="text/css" data-styled-components="a" data-styled-components-is-local="true">/* sc-component-id: PageOne */
+     .PageOne {}
+    -
+     .a{color: red;}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:120:20)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should share global styles but keep renders separate
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 4.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-2303210225 */
+     body{background: papayawhip;}
+     </style><style type="text/css" data-styled-components="b" data-styled-components-is-local="true">/* sc-component-id: PageTwo */
+     .PageTwo {}
+    -
+     .b{color: blue;}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:122:20)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should allow global styles to be injected during rendering
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-737874422 */
+     html::before{content: 'Before both renders';}
+     </style><style type="text/css" data-styled-components="a" data-styled-components-is-local="true">/* sc-component-id: PageOne */
+     .PageOne {}
+    -
+     .a{color: red;}
+     </style><style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-2914197427 */
+     html::before{content: 'During first render';}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:149:20)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should allow global styles to be injected during rendering
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 4.
+    
+    - Snapshot
+    + Received
+    
+    @@ -1,10 +1,9 @@
+     "<style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-737874422 */
+     html::before{content: 'Before both renders';}
+     </style><style type="text/css" data-styled-components="b" data-styled-components-is-local="true">/* sc-component-id: PageTwo */
+     .PageTwo {}
+    -
+     .b{color: blue;}
+     </style><style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-2914197427 */
+     html::before{content: 'During first render';}
+     /* sc-component-id: sc-global-1207956261 */
+     html::before{content: 'Between renders';}
+      
+      at Object.<anonymous> (src/test/ssr.test.js:151:20)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should dispatch global styles to each ServerStyleSheet
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-2303210225 */
+     body{background: papayawhip;}
+     </style><style type="text/css" data-styled-components="a" data-styled-components-is-local="true">/* sc-component-id: Header */
+     .Header {}
+    -
+     .a{-webkit-animation:keyframe_0 1s both;animation:keyframe_0 1s both;}
+     /* sc-component-id: sc-keyframes-keyframe_0 */
+     @-webkit-keyframes keyframe_0{0%{opacity: 0;}}@keyframes keyframe_0{0%{opacity: 0;}}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:169:17)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should return a generated React style element
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    @@ -1,10 +1,9 @@
+     Object {
+       "dangerouslySetInnerHTML": Object {
+         "__html": "/* sc-component-id: sc-a */
+     .sc-a {}
+    -
+     .b{color: red;}
+     ",
+       },
+       "data-styled-components": "b",
+       "data-styled-components-is-local": "true",
+      
+      at Object.<anonymous> (src/test/ssr.test.js:187:31)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+
+ RUNS  ...primitives.test.js
+ RUNS  ...ssr.test.js
+ RUNS  ...rehydration.test.js
+ RUNS  ...theme.test.js
+ RUNS  ...extending.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...css.test.js
+
+Test Suites: 0 of 26 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        0s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A
+ RUNS  ...primitives.test.js
+ RUNS  ...rehydration.test.js
+ RUNS  ...theme.test.js
+ RUNS  ...extending.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...css.test.js
+ RUNS  ...basic.test.js
+
+Test Suites: 1 failed, 1 of 26 total
+Tests:       8 failed, 1 passed, 9 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        1s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A
+ RUNS  ...primitives.test.js
+ RUNS  ...rehydration.test.js
+ RUNS  ...theme.test.js
+ RUNS  ...extending.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...css.test.js
+ RUNS  ...basic.test.js
+
+Test Suites: 1 failed, 1 of 26 total
+Tests:       8 failed, 1 passed, 9 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/test/css.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...rehydration.test.js
+ RUNS  ...theme.test.js
+ RUNS  ...extending.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...css.test.js
+ RUNS  ...basic.test.js
+
+Test Suites: 1 failed, 1 of 26 total
+Tests:       8 failed, 1 passed, 9 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/test/extending.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...rehydration.test.js
+ RUNS  ...theme.test.js
+ RUNS  ...extending.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...css.test.js
+ RUNS  ...basic.test.js
+
+Test Suites: 1 failed, 1 of 26 total
+Tests:       8 failed, 1 passed, 9 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A FAIL  src/test/rehydration.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...rehydration.test.js
+ RUNS  ...theme.test.js
+ RUNS  ...extending.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...css.test.js
+ RUNS  ...basic.test.js
+
+Test Suites: 1 failed, 1 of 26 total
+Tests:       8 failed, 1 passed, 9 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A  ● rehydration › with global styles › should interleave global and local styles
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      [{"css": "/* sc-component-id: sc-global-557410406 */ body { background: papayawhip; }", "isLocal": "false"}, {"css": "/* sc-component-id: TWO */ .TWO {} .b { color: red; }", "isLocal": "true"}, {"css": "/* sc-component-id: sc-global-2299393384 */ body{color: tomato;}", "isLocal": "false"}, {"css": "/* sc-component-id: ONE */ .ONE {} .a{color: blue;}", "isLocal": "true"}]
+    Received:
+      [{"css": "/* sc-component-id: sc-global-557410406 */ body { background: papayawhip; }", "isLocal": "false"}, {"css": "/* sc-component-id: TWO */ .TWO {} .b { color: red; }", "isLocal": "true"}, {"css": "/* sc-component-id: sc-global-2299393384 */ body{color: tomato;}", "isLocal": "false"}, {"css": "/* sc-component-id: ONE */ .ONE {}.a{color: blue;}", "isLocal": "true"}]
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    @@ -10,9 +10,9 @@
+       Object {
+         "css": "/* sc-component-id: sc-global-2299393384 */ body{color: tomato;}",
+         "isLocal": "false",
+       },
+       Object {
+    -    "css": "/* sc-component-id: ONE */ .ONE {} .a{color: blue;}",
+    +    "css": "/* sc-component-id: ONE */ .ONE {}.a{color: blue;}",
+         "isLocal": "true",
+       },
+     ]
+      
+      at Object.<anonymous> (src/test/rehydration.test.js:203:30)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● rehydration › with all styles already rendered › should replace stylesheets on-demand
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      "<style data-styled-components=\"a b c\" data-styled-components-is-local=\"true\">
+              /* sc-component-id: ONE */
+              .ONE {}
+              .a { color: blue; }
+              /* sc-component-id: TWO */
+              .TWO {}
+              .b { color: red; }
+            
+    /* sc-component-id: THREE */
+    .THREE {}
+    .c{color: green;}</style>"
+    Received:
+      "<style data-styled-components=\"a b c\" data-styled-components-is-local=\"true\">
+              /* sc-component-id: ONE */
+              .ONE {}
+              .a { color: blue; }
+              /* sc-component-id: TWO */
+              .TWO {}
+              .b { color: red; }
+            
+    /* sc-component-id: THREE */
+    .THREE {}.c{color: green;}</style>"
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    @@ -5,7 +5,6 @@
+               /* sc-component-id: TWO */
+               .TWO {}
+               .b { color: red; }
+             
+     /* sc-component-id: THREE */
+    -.THREE {}
+    -.c{color: green;}</style>
+    +.THREE {}.c{color: green;}</style>
+      
+      at Object.<anonymous> (src/test/rehydration.test.js:269:51)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+
+ RUNS  ...primitives.test.js
+ RUNS  ...rehydration.test.js
+ RUNS  ...theme.test.js
+ RUNS  ...extending.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...css.test.js
+ RUNS  ...basic.test.js
+
+Test Suites: 1 failed, 1 of 26 total
+Tests:       8 failed, 1 passed, 9 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/test/theme.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...rehydration.test.js
+ RUNS  ...theme.test.js
+ RUNS  ...extending.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...css.test.js
+ RUNS  ...basic.test.js
+
+Test Suites: 1 failed, 1 of 26 total
+Tests:       8 failed, 1 passed, 9 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A
+ RUNS  ...primitives.test.js
+ RUNS  ...styles.test.js
+ RUNS  ...expanded-api.test.js
+ RUNS  ...basic.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...attrs.test.js
+ RUNS  ...basic.test.js
+
+Test Suites: 2 failed, 3 passed, 5 of 26 total
+Tests:       10 failed, 57 passed, 67 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/no-parser/test/basic.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...styles.test.js
+ RUNS  ...expanded-api.test.js
+ RUNS  ...basic.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...attrs.test.js
+ RUNS  ...basic.test.js
+
+Test Suites: 2 failed, 3 passed, 5 of 26 total
+Tests:       10 failed, 57 passed, 67 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/test/warnTooManyClasses.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...styles.test.js
+ RUNS  ...expanded-api.test.js
+ RUNS  ...basic.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...attrs.test.js
+ RUNS  ...basic.test.js
+
+Test Suites: 2 failed, 3 passed, 5 of 26 total
+Tests:       10 failed, 57 passed, 67 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/test/styles.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...styles.test.js
+ RUNS  ...expanded-api.test.js
+ RUNS  ...basic.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...attrs.test.js
+ RUNS  ...basic.test.js
+
+Test Suites: 2 failed, 3 passed, 5 of 26 total
+Tests:       10 failed, 57 passed, 67 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/test/attrs.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...styles.test.js
+ RUNS  ...expanded-api.test.js
+ RUNS  ...basic.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...attrs.test.js
+ RUNS  ...basic.test.js
+
+Test Suites: 2 failed, 3 passed, 5 of 26 total
+Tests:       10 failed, 57 passed, 67 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A  ● Console
+
+    console.error node_modules/fbjs/lib/warning.js:36
+      Warning: Unknown prop `activeClassName` on <a> tag. Remove this prop from the element. For details, see https://fb.me/react-unknown-prop
+          in a
+
+
+ RUNS  ...primitives.test.js
+ RUNS  ...styles.test.js
+ RUNS  ...expanded-api.test.js
+ RUNS  ...basic.test.js
+ RUNS  ...warnTooManyClasses.test.js
+ RUNS  ...attrs.test.js
+ RUNS  ...basic.test.js
+
+Test Suites: 2 failed, 3 passed, 5 of 26 total
+Tests:       10 failed, 57 passed, 67 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A
+ RUNS  ...primitives.test.js
+ RUNS  ...keyframes.test.js
+ RUNS  ...expanded-api.test.js
+ RUNS  ...overriding.test.js
+ RUNS  ...basic.test.js
+ RUNS  ...keyframes.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 7 passed, 9 of 26 total
+Tests:       10 failed, 90 passed, 100 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/test/expanded-api.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...keyframes.test.js
+ RUNS  ...expanded-api.test.js
+ RUNS  ...overriding.test.js
+ RUNS  ...basic.test.js
+ RUNS  ...keyframes.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 7 passed, 9 of 26 total
+Tests:       10 failed, 90 passed, 100 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/test/basic.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...keyframes.test.js
+ RUNS  ...expanded-api.test.js
+ RUNS  ...overriding.test.js
+ RUNS  ...basic.test.js
+ RUNS  ...keyframes.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 7 passed, 9 of 26 total
+Tests:       10 failed, 90 passed, 100 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/no-parser/test/keyframes.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...keyframes.test.js
+ RUNS  ...expanded-api.test.js
+ RUNS  ...overriding.test.js
+ RUNS  ...basic.test.js
+ RUNS  ...keyframes.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 7 passed, 9 of 26 total
+Tests:       10 failed, 90 passed, 100 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/constructors/test/keyframes.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...keyframes.test.js
+ RUNS  ...expanded-api.test.js
+ RUNS  ...overriding.test.js
+ RUNS  ...basic.test.js
+ RUNS  ...keyframes.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 7 passed, 9 of 26 total
+Tests:       10 failed, 90 passed, 100 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/test/overriding.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...keyframes.test.js
+ RUNS  ...expanded-api.test.js
+ RUNS  ...overriding.test.js
+ RUNS  ...basic.test.js
+ RUNS  ...keyframes.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 7 passed, 9 of 26 total
+Tests:       10 failed, 90 passed, 100 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A
+ RUNS  ...primitives.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...validAttr.test.js
+ RUNS  ...styled.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...ThemeProvider.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 12 passed, 14 of 26 total
+Tests:       10 failed, 116 passed, 126 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/utils/test/validAttr.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...validAttr.test.js
+ RUNS  ...styled.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...ThemeProvider.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 12 passed, 14 of 26 total
+Tests:       10 failed, 116 passed, 126 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/utils/test/flatten.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...validAttr.test.js
+ RUNS  ...styled.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...ThemeProvider.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 12 passed, 14 of 26 total
+Tests:       10 failed, 116 passed, 126 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/no-parser/test/flatten.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...validAttr.test.js
+ RUNS  ...styled.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...ThemeProvider.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 12 passed, 14 of 26 total
+Tests:       10 failed, 116 passed, 126 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/constructors/test/styled.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...validAttr.test.js
+ RUNS  ...styled.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...ThemeProvider.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 12 passed, 14 of 26 total
+Tests:       10 failed, 116 passed, 126 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/test/props.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...validAttr.test.js
+ RUNS  ...styled.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...ThemeProvider.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 12 passed, 14 of 26 total
+Tests:       10 failed, 116 passed, 126 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/utils/test/interleave.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...validAttr.test.js
+ RUNS  ...styled.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...ThemeProvider.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 12 passed, 14 of 26 total
+Tests:       10 failed, 116 passed, 126 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/utils/test/extractCompsFromCSS.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...validAttr.test.js
+ RUNS  ...styled.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...ThemeProvider.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 12 passed, 14 of 26 total
+Tests:       10 failed, 116 passed, 126 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/utils/test/generateAlphabeticName.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...validAttr.test.js
+ RUNS  ...styled.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...ThemeProvider.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 12 passed, 14 of 26 total
+Tests:       10 failed, 116 passed, 126 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A FAIL  src/native/test/native.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...validAttr.test.js
+ RUNS  ...styled.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...ThemeProvider.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 12 passed, 14 of 26 total
+Tests:       10 failed, 116 passed, 126 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A  ● Test suite failed to run
+
+    Cannot find module 'throwOnWrongReactAPI' from 'react-native.js'
+      
+      at Resolver.resolveModule (node_modules/jest-cli/node_modules/jest-resolve/build/index.js:179:17)
+      at Object.<anonymous> (node_modules/react-native/Libraries/react-native/react-native.js:175:32)
+
+
+ RUNS  ...primitives.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...validAttr.test.js
+ RUNS  ...styled.test.js
+ RUNS  ...flatten.test.js
+ RUNS  ...ThemeProvider.test.js
+ RUNS  ...props.test.js
+
+Test Suites: 2 failed, 12 passed, 14 of 26 total
+Tests:       10 failed, 116 passed, 126 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A
+ RUNS  ...primitives.test.js
+ RUNS  ...injectGlobal.test.js
+ RUNS  ...ThemeProvider.test.js
+
+Test Suites: 3 failed, 20 passed, 23 of 26 total
+Tests:       10 failed, 168 passed, 178 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/models/test/ThemeProvider.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...injectGlobal.test.js
+ RUNS  ...ThemeProvider.test.js
+
+Test Suites: 3 failed, 20 passed, 23 of 26 total
+Tests:       10 failed, 168 passed, 178 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A FAIL  src/primitives/test/primitives.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...injectGlobal.test.js
+ RUNS  ...ThemeProvider.test.js
+
+Test Suites: 3 failed, 20 passed, 23 of 26 total
+Tests:       10 failed, 168 passed, 178 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A  ● Console
+
+    console.error node_modules/fbjs/lib/warning.js:36
+      Warning: Touchable: React.createClass is deprecated and will be removed in version 16. Use plain JavaScript classes instead. If you're not yet ready to migrate, create-react-class is available on npm as a drop-in replacement.
+
+
+ RUNS  ...primitives.test.js
+ RUNS  ...injectGlobal.test.js
+ RUNS  ...ThemeProvider.test.js
+
+Test Suites: 3 failed, 20 passed, 23 of 26 total
+Tests:       10 failed, 168 passed, 178 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A  ● primitives › should generate inline styles
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      [{}, undefined]
+    Received:
+      [63, undefined]
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Array [
+    -  Object {},
+    +  63,
+       undefined,
+     ]
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:19:32)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › should combine inline styles and the style prop
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      [{"paddingTop": 10}, {"opacity": 0.9}]
+    Received:
+      [64, {"opacity": 0.9}]
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Array [
+    +  64,
+       Object {
+    -    "paddingTop": 10,
+    -  },
+    -  Object {
+         "opacity": 0.9,
+       },
+     ]
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:31:32)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › extending › should combine styles of extending components
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      [{"opacity": 0.9}, undefined]
+    Received:
+      [65, undefined]
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Array [
+    -  Object {
+    -    "opacity": 0.9,
+    -  },
+    +  65,
+       undefined,
+     ]
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:42:49)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › extending › should combine styles of extending components in >= 3 inheritances
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      [{"backgroundColor": "red"}, undefined]
+    Received:
+      [67, undefined]
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Array [
+    -  Object {
+    -    "backgroundColor": "red",
+    -  },
+    +  67,
+       undefined,
+     ]
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:69:59)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › attrs › works fine with an empty object
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      {"style": [{}, undefined]}
+    Received:
+      {"children": undefined, "style": [63, undefined]}
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Object {
+    +  "children": undefined,
+       "style": Array [
+    -    Object {},
+    +    63,
+         undefined,
+       ],
+     }
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:114:28)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › attrs › passes simple props on
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      {"style": [{}, undefined], "test": true}
+    Received:
+      {"children": undefined, "style": [63, undefined], "test": true}
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Object {
+    +  "children": undefined,
+       "style": Array [
+    -    Object {},
+    +    63,
+         undefined,
+       ],
+       "test": true,
+     }
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:127:28)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › attrs › calls an attr-function with context
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      {"copy": "Put that cookie down!", "style": [{}, undefined], "test": "Put that cookie down!"}
+    Received:
+      {"children": undefined, "copy": "Put that cookie down!", "style": [63, undefined], "test": "Put that cookie down!"}
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Object {
+    +  "children": undefined,
+       "copy": "Put that cookie down!",
+       "style": Array [
+    -    Object {},
+    +    63,
+         undefined,
+       ],
+       "test": "Put that cookie down!",
+     }
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:142:28)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › attrs › merges multiple calls
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      {"first": "first", "second": "second", "style": [{}, undefined], "test": "test"}
+    Received:
+      {"children": undefined, "first": "first", "second": "second", "style": [63, undefined], "test": "test"}
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Object {
+    +  "children": undefined,
+       "first": "first",
+       "second": "second",
+       "style": Array [
+    -    Object {},
+    +    63,
+         undefined,
+       ],
+       "test": "test",
+     }
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:161:28)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › attrs › merges attrs when inheriting SC
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      {"first": "first", "second": "second", "style": [{}, undefined]}
+    Received:
+      {"children": undefined, "first": "first", "second": "second", "style": [63, undefined]}
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Object {
+    +  "children": undefined,
+       "first": "first",
+       "second": "second",
+       "style": Array [
+    -    Object {},
+    +    63,
+         undefined,
+       ],
+     }
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:181:28)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+
+ RUNS  ...primitives.test.js
+ RUNS  ...injectGlobal.test.js
+ RUNS  ...ThemeProvider.test.js
+
+Test Suites: 3 failed, 20 passed, 23 of 26 total
+Tests:       10 failed, 168 passed, 178 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A PASS  src/constructors/test/injectGlobal.test.js
+
+ RUNS  ...primitives.test.js
+ RUNS  ...injectGlobal.test.js
+ RUNS  ...ThemeProvider.test.js
+
+Test Suites: 3 failed, 20 passed, 23 of 26 total
+Tests:       10 failed, 168 passed, 178 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2s, estimated 3s[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A
+Summary of all failing tests
+ FAIL  src/test/ssr.test.js
+  ● ssr › should extract the CSS in a simple case
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="b" data-styled-components-is-local="true">/* sc-component-id: sc-a */
+     .sc-a {}
+    -
+     .b{color: red;}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:41:17)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should extract both global and local CSS
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-2303210225 */
+     body{background: papayawhip;}
+     </style><style type="text/css" data-styled-components="b" data-styled-components-is-local="true">/* sc-component-id: sc-a */
+     .sc-a {}
+    -
+     .b{color: red;}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:57:17)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should add a nonce to the stylesheet if webpack nonce is detected in the global scope
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="" data-styled-components-is-local="false" nonce="foo">/* sc-component-id: sc-global-2303210225 */
+     body{background: papayawhip;}
+     </style><style type="text/css" data-styled-components="b" data-styled-components-is-local="true" nonce="foo">/* sc-component-id: sc-a */
+     .sc-a {}
+    -
+     .b{color: red;}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:76:17)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should render CSS in the order the components were defined, not rendered
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="a b" data-styled-components-is-local="true">/* sc-component-id: ONE */
+     .ONE {}
+    -
+     .b{color: red;}
+     /* sc-component-id: TWO */
+     .TWO {}
+    -
+     .a{color: blue;}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:97:17)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should share global styles but keep renders separate
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-2303210225 */
+     body{background: papayawhip;}
+     </style><style type="text/css" data-styled-components="a" data-styled-components-is-local="true">/* sc-component-id: PageOne */
+     .PageOne {}
+    -
+     .a{color: red;}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:120:20)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should share global styles but keep renders separate
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 4.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-2303210225 */
+     body{background: papayawhip;}
+     </style><style type="text/css" data-styled-components="b" data-styled-components-is-local="true">/* sc-component-id: PageTwo */
+     .PageTwo {}
+    -
+     .b{color: blue;}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:122:20)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should allow global styles to be injected during rendering
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-737874422 */
+     html::before{content: 'Before both renders';}
+     </style><style type="text/css" data-styled-components="a" data-styled-components-is-local="true">/* sc-component-id: PageOne */
+     .PageOne {}
+    -
+     .a{color: red;}
+     </style><style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-2914197427 */
+     html::before{content: 'During first render';}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:149:20)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should allow global styles to be injected during rendering
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 4.
+    
+    - Snapshot
+    + Received
+    
+    @@ -1,10 +1,9 @@
+     "<style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-737874422 */
+     html::before{content: 'Before both renders';}
+     </style><style type="text/css" data-styled-components="b" data-styled-components-is-local="true">/* sc-component-id: PageTwo */
+     .PageTwo {}
+    -
+     .b{color: blue;}
+     </style><style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-2914197427 */
+     html::before{content: 'During first render';}
+     /* sc-component-id: sc-global-1207956261 */
+     html::before{content: 'Between renders';}
+      
+      at Object.<anonymous> (src/test/ssr.test.js:151:20)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should dispatch global styles to each ServerStyleSheet
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    "<style type="text/css" data-styled-components="" data-styled-components-is-local="false">/* sc-component-id: sc-global-2303210225 */
+     body{background: papayawhip;}
+     </style><style type="text/css" data-styled-components="a" data-styled-components-is-local="true">/* sc-component-id: Header */
+     .Header {}
+    -
+     .a{-webkit-animation:keyframe_0 1s both;animation:keyframe_0 1s both;}
+     /* sc-component-id: sc-keyframes-keyframe_0 */
+     @-webkit-keyframes keyframe_0{0%{opacity: 0;}}@keyframes keyframe_0{0%{opacity: 0;}}
+     </style>"
+      
+      at Object.<anonymous> (src/test/ssr.test.js:169:17)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● ssr › should return a generated React style element
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 2.
+    
+    - Snapshot
+    + Received
+    
+    @@ -1,10 +1,9 @@
+     Object {
+       "dangerouslySetInnerHTML": Object {
+         "__html": "/* sc-component-id: sc-a */
+     .sc-a {}
+    -
+     .b{color: red;}
+     ",
+       },
+       "data-styled-components": "b",
+       "data-styled-components-is-local": "true",
+      
+      at Object.<anonymous> (src/test/ssr.test.js:187:31)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+ FAIL  src/test/rehydration.test.js
+  ● rehydration › with global styles › should interleave global and local styles
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      [{"css": "/* sc-component-id: sc-global-557410406 */ body { background: papayawhip; }", "isLocal": "false"}, {"css": "/* sc-component-id: TWO */ .TWO {} .b { color: red; }", "isLocal": "true"}, {"css": "/* sc-component-id: sc-global-2299393384 */ body{color: tomato;}", "isLocal": "false"}, {"css": "/* sc-component-id: ONE */ .ONE {} .a{color: blue;}", "isLocal": "true"}]
+    Received:
+      [{"css": "/* sc-component-id: sc-global-557410406 */ body { background: papayawhip; }", "isLocal": "false"}, {"css": "/* sc-component-id: TWO */ .TWO {} .b { color: red; }", "isLocal": "true"}, {"css": "/* sc-component-id: sc-global-2299393384 */ body{color: tomato;}", "isLocal": "false"}, {"css": "/* sc-component-id: ONE */ .ONE {}.a{color: blue;}", "isLocal": "true"}]
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    @@ -10,9 +10,9 @@
+       Object {
+         "css": "/* sc-component-id: sc-global-2299393384 */ body{color: tomato;}",
+         "isLocal": "false",
+       },
+       Object {
+    -    "css": "/* sc-component-id: ONE */ .ONE {} .a{color: blue;}",
+    +    "css": "/* sc-component-id: ONE */ .ONE {}.a{color: blue;}",
+         "isLocal": "true",
+       },
+     ]
+      
+      at Object.<anonymous> (src/test/rehydration.test.js:203:30)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● rehydration › with all styles already rendered › should replace stylesheets on-demand
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      "<style data-styled-components=\"a b c\" data-styled-components-is-local=\"true\">
+              /* sc-component-id: ONE */
+              .ONE {}
+              .a { color: blue; }
+              /* sc-component-id: TWO */
+              .TWO {}
+              .b { color: red; }
+            
+    /* sc-component-id: THREE */
+    .THREE {}
+    .c{color: green;}</style>"
+    Received:
+      "<style data-styled-components=\"a b c\" data-styled-components-is-local=\"true\">
+              /* sc-component-id: ONE */
+              .ONE {}
+              .a { color: blue; }
+              /* sc-component-id: TWO */
+              .TWO {}
+              .b { color: red; }
+            
+    /* sc-component-id: THREE */
+    .THREE {}.c{color: green;}</style>"
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    @@ -5,7 +5,6 @@
+               /* sc-component-id: TWO */
+               .TWO {}
+               .b { color: red; }
+             
+     /* sc-component-id: THREE */
+    -.THREE {}
+    -.c{color: green;}</style>
+    +.THREE {}.c{color: green;}</style>
+      
+      at Object.<anonymous> (src/test/rehydration.test.js:269:51)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+ FAIL  src/native/test/native.test.js
+  ● Test suite failed to run
+
+    Cannot find module 'throwOnWrongReactAPI' from 'react-native.js'
+      
+      at Resolver.resolveModule (node_modules/jest-cli/node_modules/jest-resolve/build/index.js:179:17)
+      at Object.<anonymous> (node_modules/react-native/Libraries/react-native/react-native.js:175:32)
+
+ FAIL  src/primitives/test/primitives.test.js
+  ● primitives › should generate inline styles
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      [{}, undefined]
+    Received:
+      [63, undefined]
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Array [
+    -  Object {},
+    +  63,
+       undefined,
+     ]
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:19:32)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › should combine inline styles and the style prop
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      [{"paddingTop": 10}, {"opacity": 0.9}]
+    Received:
+      [64, {"opacity": 0.9}]
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Array [
+    +  64,
+       Object {
+    -    "paddingTop": 10,
+    -  },
+    -  Object {
+         "opacity": 0.9,
+       },
+     ]
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:31:32)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › extending › should combine styles of extending components
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      [{"opacity": 0.9}, undefined]
+    Received:
+      [65, undefined]
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Array [
+    -  Object {
+    -    "opacity": 0.9,
+    -  },
+    +  65,
+       undefined,
+     ]
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:42:49)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › extending › should combine styles of extending components in >= 3 inheritances
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      [{"backgroundColor": "red"}, undefined]
+    Received:
+      [67, undefined]
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Array [
+    -  Object {
+    -    "backgroundColor": "red",
+    -  },
+    +  67,
+       undefined,
+     ]
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:69:59)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › attrs › works fine with an empty object
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      {"style": [{}, undefined]}
+    Received:
+      {"children": undefined, "style": [63, undefined]}
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Object {
+    +  "children": undefined,
+       "style": Array [
+    -    Object {},
+    +    63,
+         undefined,
+       ],
+     }
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:114:28)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › attrs › passes simple props on
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      {"style": [{}, undefined], "test": true}
+    Received:
+      {"children": undefined, "style": [63, undefined], "test": true}
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Object {
+    +  "children": undefined,
+       "style": Array [
+    -    Object {},
+    +    63,
+         undefined,
+       ],
+       "test": true,
+     }
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:127:28)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › attrs › calls an attr-function with context
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      {"copy": "Put that cookie down!", "style": [{}, undefined], "test": "Put that cookie down!"}
+    Received:
+      {"children": undefined, "copy": "Put that cookie down!", "style": [63, undefined], "test": "Put that cookie down!"}
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Object {
+    +  "children": undefined,
+       "copy": "Put that cookie down!",
+       "style": Array [
+    -    Object {},
+    +    63,
+         undefined,
+       ],
+       "test": "Put that cookie down!",
+     }
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:142:28)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › attrs › merges multiple calls
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      {"first": "first", "second": "second", "style": [{}, undefined], "test": "test"}
+    Received:
+      {"children": undefined, "first": "first", "second": "second", "style": [63, undefined], "test": "test"}
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Object {
+    +  "children": undefined,
+       "first": "first",
+       "second": "second",
+       "style": Array [
+    -    Object {},
+    +    63,
+         undefined,
+       ],
+       "test": "test",
+     }
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:161:28)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● primitives › attrs › merges attrs when inheriting SC
+
+    expect(received).toEqual(expected)
+    
+    Expected value to equal:
+      {"first": "first", "second": "second", "style": [{}, undefined]}
+    Received:
+      {"children": undefined, "first": "first", "second": "second", "style": [63, undefined]}
+    
+    Difference:
+    
+    - Expected
+    + Received
+    
+    Object {
+    +  "children": undefined,
+       "first": "first",
+       "second": "second",
+       "style": Array [
+    -    Object {},
+    +    63,
+         undefined,
+       ],
+     }
+      
+      at Object.<anonymous> (src/primitives/test/primitives.test.js:181:28)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+
+Snapshot Summary
+ › 10 snapshot tests failed in 1 test suite. Inspect your code changes or run with `npm run test:web -- -u` to update them.
+
+Test Suites: 4 failed, 22 passed, 26 total
+Tests:       19 failed, 184 passed, 203 total
+Snapshots:   10 failed, 10 passed, 20 total
+Time:        2.967s, estimated 3s
+Ran all test suites.
+
+npm ERR! Linux 4.4.0-43-Microsoft
+npm ERR! argv "/home/schwers/.nvm/versions/node/v6.9.5/bin/node" "/home/schwers/.nvm/versions/node/v6.9.5/bin/npm" "run" "test:web"
+npm ERR! node v6.9.5
+npm ERR! npm  v3.10.10
+npm ERR! code ELIFECYCLE
+npm ERR! styled-components@2.2.1 test:web: `jest -c .jest.web.json`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the styled-components@2.2.1 test:web script 'jest -c .jest.web.json'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the styled-components package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     jest -c .jest.web.json
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs styled-components
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls styled-components
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /mnt/c/Users/schwers/dev/reddit/styled-components/npm-debug.log
+
+npm ERR! Linux 4.4.0-43-Microsoft
+npm ERR! argv "/home/schwers/.nvm/versions/node/v6.9.5/bin/node" "/home/schwers/.nvm/versions/node/v6.9.5/bin/npm" "run" "test"
+npm ERR! node v6.9.5
+npm ERR! npm  v3.10.10
+npm ERR! code ELIFECYCLE
+npm ERR! styled-components@2.2.1 test: `npm run test:web && npm run test:native && npm run test:size`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the styled-components@2.2.1 test script 'npm run test:web && npm run test:native && npm run test:size'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the styled-components package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     npm run test:web && npm run test:native && npm run test:size
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs styled-components
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls styled-components
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /mnt/c/Users/schwers/dev/reddit/styled-components/npm-debug.log
