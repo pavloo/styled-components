@@ -6400,9 +6400,9 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-stylis-plugin-emotion@^8.0.5:
-  version "8.0.5"
-  resolved "https://registry.yarnpkg.com/stylis-plugin-emotion/-/stylis-plugin-emotion-8.0.5.tgz#81c1700c5002e41c26620d1e78855516d564938a"
+stylis-rule-sheet@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/stylis-rule-sheet/-/stylis-rule-sheet-0.0.6.tgz#059f89125a8e8db546e8adb0e07c4b4bcb81911b"
 
 stylis@3.x:
   version "3.3.2"
