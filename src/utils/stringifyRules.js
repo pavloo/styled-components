@@ -1,7 +1,7 @@
 // @flow
 import Stylis from 'stylis'
 // $FlowFixMe
-import _insertRulePlugin from 'stylis-plugin-emotion'
+import _insertRulePlugin from 'stylis-rule-sheet'
 import type { Interpolation } from '../types'
 
 const stylis = new Stylis({
